@@ -1,110 +1,108 @@
-import { useRouter } from "next/router";
-import { getCategoriesOverview } from "../../lib/lessons";
-import Link from "next/link";
-import { Sandpack } from "@codesandbox/sandpack-react";
 import {
-  staticPathsInterface,
-  pathsInterface,
+  CategoryInterface,
   LessonInterface,
-} from "../../lib/types";
+  pathsInterface,
+} from "../../types/Lessons";
+import { getCategories } from "../../utils/GetCategories";
+import { useRouter } from "next/router";
+import styles from "../../styles/LessonPresentation.module.css";
+import Head from "next/head";
 
-export function getStaticPaths() {
-  const categories = getCategoriesOverview();
-  const paths: { params: { category: string; lesson: string } }[] = [];
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
+
+import Image from "next/image";
+
+export const getStaticPaths = () => {
+  const categories = getCategories();
+  const paths: {
+    params: { category: string; lesson: string };
+  }[] = [];
 
   categories.forEach((category) => {
     category.lessons.forEach((lesson) => {
       paths.push({
         params: {
-          category: category.category,
+          category: category.id,
           lesson: lesson.id,
         },
       });
     });
   });
 
-  return { paths, fallback: false } as staticPathsInterface;
-}
+  return { paths, fallback: false };
+};
 
-export async function getStaticProps({ params }: pathsInterface) {
-  const categories = getCategoriesOverview();
-  const category = categories.find(
-    (category) => category.category === params.category
+export const getStaticProps = ({ params }: pathsInterface) => {
+  const category = getCategories().find(
+    (category) => category.id === params.category
   );
+
   const lesson = category?.lessons.find(
     (lesson) => lesson.id === params.lesson
-  ) as LessonInterface;
+  );
+
   return {
     props: {
       lesson,
+      category,
     },
   };
-}
+};
 
-const components = { Sandpack };
-
-const CategoryPresentation = ({ lesson }: { lesson: LessonInterface }) => {
-  const { query } = useRouter();
-  const { title, author, contentHtml, draft, rowNumber } = lesson;
+const Lesson = ({
+  lesson,
+  category,
+}: {
+  lesson: LessonInterface;
+  category: CategoryInterface;
+}) => {
+  const router = useRouter();
 
   return (
     <>
-      <Link href={`/` + query.category}>↜ Grįžk atgal</Link>
-      <div
-        style={{
-          margin: "1rem 0",
-          backgroundColor: "#f1f1f1",
-          borderRadius: "20px",
-          padding: "20px",
+      <Head>
+        <title>{lesson.name} - IšmOK pamokos</title>
+      </Head>
+      <button onClick={() => router.push(`/${category.id}`)}>
+        ↜ grįžk atgal
+      </button>
+      <div className={styles.card}>
+        <h1>{lesson.name}</h1>
+        <p>{lesson.description}</p>
+      </div>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
+        className={styles.markdown}
+        components={{
+          img: ({ src, alt }) => {
+            // eslint-disable-next-line @next/next/no-img-element
+            return <img src={src} alt={alt} loading="lazy" />;
+          },
+          code({node, inline, className, children, ...props}) {
+            const match = /language-(\w+)/.exec(className || '')
+            return !inline && match ? (
+              <SyntaxHighlighter
+                language={match[1]}
+                PreTag="div"
+              >
+                {String(children).replace(/\n$/, '')}
+              </SyntaxHighlighter>
+            ) : (
+              <code className={className} {...props}>
+                {children}
+              </code>
+            )
+          }
         }}
       >
-        <p
-          style={{
-            margin: "0 0 8px 0",
-          }}
-        >
-          Pamoka #{rowNumber}
-        </p>
-        <h1
-          style={{
-            margin: "4px 0px",
-          }}
-        >
-          {title}
-        </h1>
-      </div>
-
-      {draft && (
-        <div
-          style={{
-            backgroundColor: "#FFEC70",
-            borderRadius: "20px",
-            padding: "20px",
-            textAlign: "center",
-          }}
-        >
-          <p
-            style={{
-              margin: "4px 0px",
-            }}
-          >
-            Ši pamoka nėra pradinės būsenos, šiuo metu jinai yra dar kuriama ir
-            tobulinama!
-          </p>
-        </div>
-      )}
-
-      <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-
-      <p style={{ opacity: "0.5" }}>
-        Visos pamokos naudoja{" "}
-        <a href="" target="_blank" rel="norefereer noopener">
-          CC BY-NC-SA 4.0
-        </a>{" "}
-        licenziją, jeigu nenurodyta kitaip.
-      </p>
+        {lesson.content}
+      </ReactMarkdown>
     </>
   );
 };
 
-export default CategoryPresentation;
+export default Lesson;

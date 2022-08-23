@@ -1,19 +1,24 @@
+interface LessonAuthor {
+  name: string;
+  github?: string;
+}
+
 export interface LessonInterface {
   id: string;
-  contentHtml: string;
-  title: string;
+  name: string;
+  description: string;
+  author: LessonAuthor[];
   rowNumber: number;
-  author: string;
-  draft: boolean;
-  categoryFinish?: boolean;
+  content: string;
+  draft?: boolean;
 }
 
 export interface CategoryInterface {
-  category: string;
-  lessons: LessonInterface[];
+  id: string;
   name: string;
   description: string;
-  rowNumber: number;
+  lessons: LessonInterface[];
+  hidden?: boolean;
 }
 
 export interface pathsInterface {

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "meta",
+    "name": "Pristatomosios pamokos",
+    "description": "Sužinok, kaip naudotis IšmOK!"
+  },
+  {
+    "id": "cpp",
+    "name": "C++",
+    "description": "Pasiruošk IT VBE egzaminui!"
+  },
+  {
+    "id": "dirbtuves",
+    "name": "Dirbtuvės",
+    "description": "Lengvi projektai, siekiantys tave supažindinti su naujomis technologijomis!"
+  },
+  {
+    "id": "svetaines",
+    "name": "Svetainės",
+    "description": "Nuo pristatomosios svetainės kūrimo, iki internetinio žaidimo!",
+    "hidden": true
+  }
+]

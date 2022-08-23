@@ -1,0 +1,28 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0.5;
+    padding: 1rem 0;
+}
+
+.footer > div {
+    max-width: 45%;
+}
+
+.rightAlign {
+    text-align: right;
+}
+
+@media (max-width: 500px) {
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer > div {
+        max-width: 100%;
+    }
+    .rightAlign {
+        text-align: center;
+    }
+}

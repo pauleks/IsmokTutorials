@@ -1,0 +1,21 @@
+.introBanner {
+    background: var(--text);
+    color: var(--background);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.introBanner h1 {
+    margin: 4px 0;
+    font-size: 4rem;
+}
+
+.introBanner p:first-child {
+    letter-spacing: 3px;
+}

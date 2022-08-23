@@ -1,62 +1,64 @@
-import { getCategoriesOverview } from "../lib/lessons";
+import { getCategories } from "../utils/GetCategories";
 import Link from "next/link";
-import {
-  staticPathsInterface,
-  pathsInterface,
-  CategoryInterface,
-} from "../lib/types";
+import { useRouter } from "next/router";
+import styles from "../styles/CategoryPresentation.module.css";
+import Head from "next/head";
 
-export function getStaticPaths() {
-  const categories = getCategoriesOverview();
+import { CategoryInterface, pathsInterface } from "../types/Lessons";
+
+export const getStaticPaths = () => {
+  const categories = getCategories();
   const paths = categories.map((category) => {
     return {
       params: {
-        category: category.category,
+        category: category.id,
       },
     };
   });
-  return { paths, fallback: false } as staticPathsInterface;
-}
 
-export function getStaticProps({ params }: pathsInterface) {
-  const categories = getCategoriesOverview();
-  const category = categories.find(
-    (category) => category.category === params.category
-  ) as CategoryInterface;
+  return { paths, fallback: false };
+};
+
+export const getStaticProps = ({ params }: pathsInterface) => {
+  const category = getCategories().find(
+    (category) => category.id === params.category
+  );
+
   return {
     props: {
       category,
     },
   };
-}
+};
 
 const CategoryPresentation = ({
   category,
 }: {
   category: CategoryInterface;
 }) => {
-  const lessons = category.lessons.map(
-    (
-      lesson: {
-        id: string;
-        title: string;
-      },
-      i: number
-    ) => (
-      <p key={lesson.id}>
-        <b>{i + 1}:</b>{" "}
-        <Link href={category.category + `/` + lesson.id}>{lesson.title}</Link>
-      </p>
-    )
-  );
+  const categoryLessons = category.lessons.map((lesson, i) => {
+    return (
+      <div key={lesson.id}>
+        <b>{i + 1}.</b>{" "}
+        <Link href={`/${category.id}/${lesson.id}`}>{lesson.name}</Link>
+      </div>
+    );
+  });
+
+  const router = useRouter();
 
   return (
     <>
-      <Link href={`/`}>↜ Grįžk atgal</Link>
-      <h1>{category.name}</h1>
-      <h2>{category.description}</h2>
-      <hr />
-      <div>{lessons}</div>
+      <Head>
+        <title>{category.name} - IšmOK pamokos</title>
+      </Head>
+      <button onClick={() => router.push(`/`)}>↜ grįžk atgal</button>
+      <div className={styles.parent} style={{ padding: "1rem" }}>
+        <h1>{category.name}</h1>
+        <p>{category.description}</p>
+      </div>
+      <h2>Pamokų sąrašas</h2>
+      {categoryLessons}
     </>
   );
 };

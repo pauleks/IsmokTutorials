@@ -12,12 +12,12 @@
   {
     "id": "dirbtuves",
     "name": "Dirbtuvės",
-    "description": "Lengvi projektai, siekiantys tave supažindinti su naujomis technologijomis!"
+    "description": "Lengvi projektai, siekiantys tave supažindinti su naujomis technologijomis."
   },
   {
     "id": "svetaines",
     "name": "Svetainės",
-    "description": "Nuo pristatomosios svetainės kūrimo, iki internetinio žaidimo!",
+    "description": "Nuo pristatomosios svetainės kūrimo, iki internetinio žaidimo.",
     "hidden": true
   }
 ]

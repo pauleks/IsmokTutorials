@@ -4,13 +4,13 @@
 }
 
 :root {
-  --background: #fdfdfd;
+  --background: #f0f0f0;
   --text: #141414;
 }
 
 [data-theme="dark"] {
   --background: #141414;
-  --text: #fdfdfd;
+  --text: #f0f0f0;
 }
 
 html,
@@ -57,4 +57,12 @@ button:hover,
 button:active {
   background: var(--text);
   color: var(--background);
+}
+
+pre > pre {
+  width: calc(98% - 2px) !important;
+  padding: 1% !important;
+
+  border: 1px solid var(--text);
+  border-radius: 3px;
 }

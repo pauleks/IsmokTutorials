@@ -7,11 +7,13 @@ import { getCategories } from "../../utils/GetCategories";
 import { useRouter } from "next/router";
 import styles from "../../styles/LessonPresentation.module.css";
 import Head from "next/head";
+import { useTheme } from "next-themes";
 
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import { a11yDark, a11yLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
 import Image from "next/image";
 
@@ -60,6 +62,7 @@ const Lesson = ({
   category: CategoryInterface;
 }) => {
   const router = useRouter();
+  const { theme } = useTheme();
 
   return (
     <>
@@ -78,16 +81,15 @@ const Lesson = ({
         rehypePlugins={[rehypeRaw]}
         className={styles.markdown}
         components={{
-          img: ({ src, alt }) => {
-            // eslint-disable-next-line @next/next/no-img-element
-            return <img src={src} alt={alt} loading="lazy" />;
+          img: ({ src, alt, width, height }) => {
+            return <Image src={src as string} alt={alt} width={width} height={height} />;
           },
-          code({node, inline, className, children, ...props}) {
+          code({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '')
             return !inline && match ? (
               <SyntaxHighlighter
                 language={match[1]}
-                PreTag="div"
+                style={theme === "dark" ? a11yDark : a11yLight}
               >
                 {String(children).replace(/\n$/, '')}
               </SyntaxHighlighter>

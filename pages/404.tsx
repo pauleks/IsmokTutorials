@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-export default () => {
+const Custom404 = () => {
     return (
         <div style={{
             display: "flex",
@@ -14,3 +14,5 @@ export default () => {
         </div>
     )
 }
+
+export default Custom404;

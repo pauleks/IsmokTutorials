@@ -1,10 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getCategories } from "../../../utils/GetCategories";
+
+import CategoriesData from "../../../data/Categories.json";
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
-  const thing = getCategories();
-
-  res.json(thing);
+  res.json(CategoriesData);
 };
 
 export default handler;

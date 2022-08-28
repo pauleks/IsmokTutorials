@@ -4,19 +4,18 @@ import { CategoryInterface } from "../types/Lessons";
 import CategoryPresentation from "../components/CategoryPresentation";
 import Head from "next/head";
 
-import { getCategories } from "../utils/GetCategories";
+import CategoriesData from "../data/Categories.json";
 
 export const getStaticProps = () => {
-  const categories = getCategories();
   return {
     props: {
-      categories,
+      CategoriesData,
     },
   };
 };
 
-const Home = ({ categories }: { categories: CategoryInterface[] }) => {
-  const categoriesList = categories.map((category) => {
+const Home = ({ CategoriesData }: { CategoriesData: CategoryInterface[] }) => {
+  const categoriesList = CategoriesData.map((category) => {
     return (
       <CategoryPresentation
         key={category.id}

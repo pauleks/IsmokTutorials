@@ -4,13 +4,8 @@ interface LessonAuthor {
 }
 
 export interface LessonInterface {
-  id: string;
   name: string;
-  description: string;
-  author: LessonAuthor[];
-  rowNumber: number;
-  content: string;
-  draft?: boolean;
+  link: string;
 }
 
 export interface CategoryInterface {
@@ -22,7 +17,7 @@ export interface CategoryInterface {
 }
 
 export interface pathsInterface {
-  params: { category: string; lesson: string };
+  params: { category: string; };
 }
 
 export interface staticPathsInterface {

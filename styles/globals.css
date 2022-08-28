@@ -26,7 +26,7 @@ body {
 body {
   max-width: 40rem;
   padding: 0 1rem;
-  margin: 3rem auto 6rem;
+  margin: 3rem auto 3rem;
 }
 
 a {
@@ -59,7 +59,7 @@ button:active {
   color: var(--background);
 }
 
-pre > pre {
+pre {
   width: calc(98% - 2px) !important;
   padding: 1% !important;
 

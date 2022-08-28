@@ -38,7 +38,7 @@ const CategoryPresentation = ({
 
     console.log(category);
 
-    const lessonsList = category.lessons.map((lesson) => <li><Link href={`/${category.id}/${lesson.link}`}>{lesson.name}</Link></li>);
+    const lessonsList = category.lessons.map((lesson, arrayNum) => <li key={arrayNum}><Link href={`/${category.id}/${lesson.link}`}>{lesson.name}</Link></li>);
 
     return (
         <>

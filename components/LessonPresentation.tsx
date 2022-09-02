@@ -1,11 +1,19 @@
 import styles from "../styles/LessonPresentation.module.css";
+import Head from "next/head";
+import Link from "next/link";
 
-const LessonPresentation = ({ lessonName, description, authors }: { lessonName: string, description: string, authors?: string[] }) => {
+const LessonPresentation = ({ lessonName, description, category, authors }: { lessonName: string, description: string, category: string, authors?: string[] }) => {
     return (
-        <div className={styles.card}>
-            <h1>{lessonName}</h1>
-            <p>{description}</p>
-        </div>
+        <>
+            <Head>
+                <title>{lessonName} - IšmOK pamokos</title>
+            </Head>
+            <Link href={`/${category}`}>↜ grįžk atgal</Link>
+            <div className={styles.card}>
+                <h1>{lessonName}</h1>
+                <p>{description}</p>
+            </div>
+        </>
     )
 }
 

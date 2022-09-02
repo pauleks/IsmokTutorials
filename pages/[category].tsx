@@ -45,8 +45,7 @@ const CategoryPresentation = ({
             <Head>
                 <title>{category.name} - IšmOK pamokos</title>
             </Head>
-            <Link href={`/`}>↜ grįžk atgal</Link>
-            <LessonPresentation lessonName={category.name} description={category.description} />
+            <LessonPresentation lessonName={category.name} description={category.description} category={'/'} />
             <ol>{lessonsList}</ol>
         </>
     );

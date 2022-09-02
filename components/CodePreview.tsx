@@ -13,7 +13,7 @@ const CodePreview = ({ language, startWithRow, children }: { language: string, s
             showLineNumbers={true}
             startingLineNumber={startWithRow || 1}
         >
-            {String(children).replace(/\n$/, '')}
+            {String(children).replace(/\n$/, '').replace(/^\s+/, '')}
         </SyntaxHighlighter>
     )
 }

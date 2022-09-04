@@ -17,14 +17,11 @@ const components = {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const { theme } = useTheme();
-
   return (
     <MDXProvider components={components}>
       <ThemeProvider>
         <NextNProgress
-          color={theme === "dark" ? "#f0f0f0" : "#141414"}
-        />
+          options={{ showSpinner: false }} />
         <PointsPreview />
         <Navbar />
         <Component {...pageProps} />

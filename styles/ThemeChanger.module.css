@@ -1,0 +1,70 @@
+.buttonRow {
+    display: flex;
+    gap: 8px;
+}
+
+.themeChangerButton {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    padding: 0;
+}
+
+.themeChangerButton::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    clip-path: polygon(100% 50%, 0% 100%, 100% 100%);
+}
+
+.light,
+.light:hover,
+.light:active {
+    background: #d9d9d9;
+}
+
+.light::after {
+    background: #090909;
+}
+
+.dark,
+.dark:hover,
+.dark:active {
+    background: #090909;
+}
+
+.dark::after {
+    background: #d9d9d9;
+}
+
+.green,
+.green:hover,
+.green:active {
+    background: #78ab70;
+}
+
+.green::after {
+    background: #090909;
+}
+
+.pink,
+.pink:hover,
+.pink:active {
+    background: #ffd8e4;
+}
+
+.pink::after {
+    background: #31101d;
+}
+
+.orange,
+.orange:hover,
+.orange:active {
+    background: #f8ceaf;
+}
+
+.orange::after {
+    background: #090909;
+}

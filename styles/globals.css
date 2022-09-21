@@ -4,13 +4,33 @@
 }
 
 :root {
-  --background: #f0f0f0;
-  --text: #141414;
+  --background: #d9d9d9;
+  --text: #090909;
 }
 
 [data-theme="dark"] {
-  --background: #141414;
-  --text: #f0f0f0;
+  --background: #090909;
+  --text: #d9d9d9;
+}
+
+[data-theme="light"] {
+  --background: #d9d9d9;
+  --text: #090909;
+}
+
+[data-theme="green"] {
+  --background: #78ab70;
+  --text: #090909;
+}
+
+[data-theme="pink"] {
+  --background: #ffd8e4;
+  --text: #31101d;
+}
+
+[data-theme="orange"] {
+  --background: #f8ceaf;
+  --text: #090909;
 }
 
 html,
@@ -21,12 +41,49 @@ body {
     Droid Sans, Helvetica Neue, sans-serif;
   background: var(--background);
   color: var(--text);
+  transition: 150ms all;
 }
 
 body {
-  max-width: 40rem;
+  /* max-width: 40rem; */
   padding: 0 1rem;
   margin: 3rem auto 3rem;
+}
+
+h1 {
+  font-size: 6rem;
+  margin: 1.5rem 0;
+}
+
+h2 {
+  font-size: 3rem;
+  margin: 0.75rem 0;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+br {
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  br {
+    margin-bottom: 2rem;
+  }
 }
 
 a {
@@ -74,4 +131,8 @@ img {
 
 #nprogress .bar {
   background: var(--text) !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px var(--text), 0 0 5px var(--text) !important;
 }

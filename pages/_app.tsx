@@ -9,6 +9,7 @@ import Navbar from "../components/NavigationBar";
 import Footer from "../components/Footer";
 import PointsPreview from "../components/PointsPreview";
 import NextNProgress from "nextjs-progressbar";
+import CookiesNotice from "../components/CookiesNotice";
 
 const ResponsiveImage = (props: any) => <Image alt={props.alt} layout="responsive" {...props} />
 
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <NextNProgress
           options={{ showSpinner: false }} />
         <PointsPreview />
+        <CookiesNotice />
         <Navbar />
         <Component {...pageProps} />
         <Footer />

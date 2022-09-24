@@ -17,7 +17,7 @@ const Home = () => {
       <h3>(Jau greitai)</h3>
       <br />
       <h2>Apie autorių</h2>
-      <p>Čia dar nieko nėra bet pridėjau font switcher'į nustatymuose :^)</p>
+      <p>Čia dar nieko nėra bet pridėjau font switcher&#39;į nustatymuose {":^)"}</p>
     </>
   );
 };

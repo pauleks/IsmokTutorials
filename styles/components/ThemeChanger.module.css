@@ -1,13 +1,9 @@
-.buttonRow {
-    display: flex;
-    gap: 8px;
-}
-
 .themeChangerButton {
     width: 48px;
     height: 48px;
     border-radius: 50%;
     padding: 0;
+    margin: 0 8px 0 0;
 }
 
 .themeChangerButton::after {

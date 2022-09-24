@@ -1,6 +1,6 @@
-import styles from "../styles/LessonPresentation.module.css";
 import Head from "next/head";
 import Link from "next/link";
+import styles from "../styles/LessonPresentation.module.css";
 
 const LessonPresentation = ({ lessonName, description, category, authors }: { lessonName: string, description: string, category: string, authors?: string[] }) => {
     return (

@@ -1,7 +1,7 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { websiteTheme } from "../types";
-import styles from '../styles/ThemeChanger.module.css'
+import styles from '../styles/components/ThemeChanger.module.css'
 
 const ThemeChanger = () => {
   const [mounted, setMounted] = useState(false);

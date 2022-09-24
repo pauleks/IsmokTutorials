@@ -4,6 +4,8 @@
     align-items: center;
     opacity: 0.5;
     padding: 1rem 0;
+    /* siuo metu prideta ir sitai */
+    flex-direction: column;
 }
 
 .footer > div {
@@ -14,7 +16,7 @@
     text-align: right;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .footer {
         flex-direction: column;
         text-align: center;

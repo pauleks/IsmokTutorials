@@ -1,6 +1,6 @@
 // for debug purposes only
 import Link from "next/link";
-import styles from "../styles/PointsPreview.module.css";
+import styles from "../styles/components/PointsPreview.module.css";
 
 const POINTS = 15;
 

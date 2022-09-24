@@ -12,5 +12,14 @@ module.exports = withMDX({
   swcMinify: true,
   images: {
     domains: ['i.kawaii.sh']
-  }
+  },
+  async redirects() {
+    return [
+      {
+        source: '/pamokos',
+        destination: '/',
+        permanent: true,
+      },
+    ]
+  },
 })

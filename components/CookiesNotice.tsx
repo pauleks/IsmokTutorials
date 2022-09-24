@@ -1,5 +1,5 @@
-import styles from "../styles/Cookies.module.css";
 import { useEffect, useState } from "react";
+import styles from "../styles/components/CookiesNotice.module.css";
 
 const CookiesNotice = () => {
     const [cookiesAccepted, setCookiesAccepted] = useState(false);

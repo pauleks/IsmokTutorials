@@ -8,7 +8,6 @@ export const getStaticProps = async () => {
   const lessons = await getLessons();
 
   const filteredLessons = lessons.filter((lesson: any) => {
-    console.log(lesson);
     return lesson.data && lesson.data?.draft === false;
   }).sort((a: any, b: any) => { return a.data?.rowNumber - b.data?.rowNumber });
 
@@ -20,18 +19,6 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({ filteredLessons }: { filteredLessons: any }) => {
-  const [hideIntro, setHideIntro] = useState(false);
-
-  useEffect(() => {
-    const hideIntro = localStorage.getItem("hideIntro");
-    if (hideIntro === "true") {
-      setHideIntro(true);
-    }
-    setTimeout(() => {
-      localStorage.setItem("hideIntro", "true");
-    }, 5000);
-  }, []);
-
   const lessons = filteredLessons.map((lesson: any) => {
     return (
       <div key={lesson.id} className={styles.lessonSection}>
@@ -49,9 +36,7 @@ const Home = ({ filteredLessons }: { filteredLessons: any }) => {
         <title>IšmOK pamokos</title>
       </Head>
       <h1>Sveiki atvykę į <span style={{ textDecoration: "underline wavy" }}>IŠMOK</span> C++ kursą!</h1>
-      {!hideIntro &&
-        <h2>Čia - nemokamas C++ kursas, skirtas visiems, kurie ruošiasi informacinių technologijų VBE egzaminui.</h2>
-      }
+      <h2>Čia - nemokamas C++ kursas, skirtas visiems, kurie ruošiasi informacinių technologijų VBE egzaminui.</h2>
       <br />
       <h2 style={{ textDecoration: "underline wavy" }}>Pamokų sąrašas</h2>
       {lessons}

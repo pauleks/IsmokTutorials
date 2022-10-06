@@ -1,7 +1,18 @@
+const { remarkCodeHike } = require("@code-hike/mdx")
+
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [],
+    remarkPlugins: [
+      [
+        remarkCodeHike,
+        {
+          theme: require("shiki/themes/github-light.json"),
+          lineNumbers: true,
+          staticMediaQuery: "not screen, (max-width: 768px)",
+        }
+      ]
+    ],
     rehypePlugins: [],
   },
 })

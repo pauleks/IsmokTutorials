@@ -7,7 +7,8 @@ const Custom404 = () => {
             justifyContent: "center",
             alignItems: "center",
             height: "50vh",
-            flexDirection: "column"
+            flexDirection: "column",
+            textAlign: "center"
         }}>
             <h1>Puslapis nerastas</h1>
             <Link href="/">↜ grįžk į pradinį puslapį</Link>

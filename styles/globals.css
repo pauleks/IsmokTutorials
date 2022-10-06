@@ -38,54 +38,37 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: var(--font), sans-serif;
+  font-family: ReadexPro, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Open Sans", "Helvetica Neue", sans-serif;
   background: var(--background);
   color: var(--text);
-  /* transition: 150ms all; */
+  transition: 150ms all;
   font-size: 1.1rem;
 }
 
 body {
-  /* max-width: 40rem; */
+  max-width: 40rem;
   padding: 0 1rem;
   margin: 3rem auto 3rem;
 }
 
 h1 {
-  font-size: 6rem;
+  font-size: 3rem;
   margin: 1.5rem 0;
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 1.7rem;
   margin: 1rem 0;
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 1.2rem;
   margin: 0.5rem 0;
 }
 
 br {
-  margin-bottom: 3.5rem;
-}
-
-@media (max-width: 768px) {
-  h1 {
-    font-size: 3rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
-  h3 {
-    font-size: 1.5rem;
-  }
-
-  br {
-    margin-bottom: 2rem;
-  }
+  margin-bottom: 2rem;
 }
 
 a {

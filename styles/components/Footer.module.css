@@ -6,6 +6,7 @@
     padding: 1rem 0;
     /* siuo metu prideta ir sitai */
     flex-direction: column;
+    text-align: center;
 }
 
 .footer > div {
@@ -13,10 +14,11 @@
 }
 
 .rightAlign {
-    text-align: right;
+    /* text-align: right; */
+    text-align: center;
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
     .footer {
         flex-direction: column;
         text-align: center;
@@ -27,4 +29,4 @@
     .rightAlign {
         text-align: center;
     }
-}
+} */

@@ -6,6 +6,8 @@ const NavigationBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const links = [
+    { name: "Pamokos", href: "/" },
+    { name: "VBE", href: "/egzaminai", disabled: true },
     { name: "Taškai", href: "/taskai", disabled: true },
     { name: "Nustatymai", href: "/nustatymai" },
   ];

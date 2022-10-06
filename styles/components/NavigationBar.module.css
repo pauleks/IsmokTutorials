@@ -50,9 +50,10 @@
 }
 
 /* phone screen */
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 700px) {
     .openMenu {
         display: flex !important;
+        animation: openMenu 0.15s ease-in-out;
     }
 
     .mobileIconMenu {
@@ -66,16 +67,34 @@
 
     .menu {
         position: fixed;
-        display: none;
-        top: 0;
+        bottom: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         background-color: var(--background);
         flex-direction: column;
         gap: 16px;
         justify-content: center;
         align-items: center;
         z-index: 10000;
+        display: none;
+    }
+}
+
+@keyframes openMenu {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes closeMenu {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }

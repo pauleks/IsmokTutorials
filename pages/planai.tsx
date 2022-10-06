@@ -12,12 +12,11 @@ const Planai = () => {
                     <li>Konsolės įvestis</li>
                     <li>...</li>
                 </ul>
-                <li className="done">Šriftų keitimas</li>
                 <li className="done">Navigation bar</li>
                 <li className="done">Slapukų notice</li>
-                <li>Kodo atvaizdavimo {`<code>`} CSS patobulinimai</li>
-                <li>a11y / prieinamumas</li>
-                <ul>
+                <li><span className="done">Kodo atvaizdavimo {`<code>`} CSS patobulinimai</span> {"->"} CodeHike naudojimas </li>
+                <li className="maybe">a11y / prieinamumas</li>
+                <ul className="maybe">
                     <li>šriftas, skirtas disleksiją turintiems žmonėms</li>
                     <li>svetainės struktūros pritaikymas screen readeriams (?)</li>
                 </ul>

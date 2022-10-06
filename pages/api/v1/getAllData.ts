@@ -1,9 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
+import { getLessons } from "../../../lib/getLessons";
 
-//import CategoriesData from "../../../data/Categories.json";
-
-const handler = (req: NextApiRequest, res: NextApiResponse) => {
-  res.json({ hello: "world" });
-};
-
-export default handler;
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const lessons = await getLessons();
+  res.status(200).json(lessons);
+}
